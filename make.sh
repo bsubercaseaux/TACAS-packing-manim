@@ -1,12 +1,12 @@
-SLIDES="LineGraphExample Subgraphs"
+SLIDES="LineGraphExample Subgraphs Motivation IntroSlide"
 LAST=True
 if [ "$LAST" = True ]; then
     # last word of SLIDES
     SLIDES=${SLIDES##* }
 fi
 
-manim -qh src/Subgraphs.py $SLIDES
-manim-slides $SLIDES
+manim -qk src/motivation2.py $SLIDES
+manim-slides present $SLIDES
  # manim -qm src/introSlide.py InThisTalk
 # manim -qk src/introSlide.py Interpretable
 # manim-slides convert MythBusters IntroSlide Questions DecisionTree build/slides.html
