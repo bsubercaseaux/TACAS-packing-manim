@@ -1,6 +1,6 @@
 LAST=True
 
-manim -qh src/slides.py Tacas
+manim -qk src/slides.py Tacas
 manim-slides convert Tacas build/slides.html
  # manim -qm src/introSlide.py InThisTalk
 # manim -qk src/introSlide.py Interpretable

@@ -8,7 +8,10 @@ tex_template = TexTemplate()
 tex_template.add_to_preamble(r"""\usepackage{booktabs}
                              \usepackage[dvipsnames]{xcolor}
                              \usepackage{amsmath}
+                             \usepackage{soul}
                              \usepackage{amssymb}
+                             \usepackage{wasysym}
+                             \usepackage{booktabs}
                              \usepackage{mathtools}
                              \usepackage{newpxmath}
                              \usepackage{newpxtext}
@@ -22,17 +25,21 @@ MathTex.set_default(tex_template=tex_template)
 
 MY_COLORS = {
     0: BLACK,
-    1: PINK,
-    2: GREEN_C,
-    3: BLUE,
+    1: PURPLE_E,
+    2: GREEN_D,
+    3: BLUE_E,
     4: GOLD_E,
-    5: ORANGE,
-    6: YELLOW_B,
+    5: MAROON_E,
+    6: YELLOW_D,
     7: MAROON_A,
-    8: GREEN_A,
+    8: GREEN_B,
     9: TEAL_E,
-    10: MAROON_E,
+    10: RED_E,
     11: BLUE_A,
+    12: BLUE,
+    13: GRAY,
+    14: ORANGE,
+    15: GREEN_E
 }
 
 

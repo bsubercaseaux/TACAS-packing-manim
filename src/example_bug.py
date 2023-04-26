@@ -1,35 +1,25 @@
 from manim import *
-
-class Node(Mobject):
-    def __init__(self):
-        super().__init__()
-        self.circle = Circle(radius=1)
-        self.add(self.circle)
         
-    def ColorNode(self, color, label_text:str = ''):
-        def color_circle(circle):
-            circle.set_fill(color, opacity=1)
-            circle.set_stroke(color, opacity=1)
-            return circle
-        
-        label = Text(label_text)
-        label.move_to(self.circle)
-        #self.circle.add(label)
-        return AnimationGroup(ApplyFunction(color_circle, self.circle),
-                              Write(label))
-        
-
 class Test(Scene):
     def construct(self):
         self.nodes = []
-        for i in range(5):
-            self.nodes.append(Node())
-            self.nodes[-1].move_to([i*2, 0, 0])
-      
-        self.play(*[FadeIn(node) for node in self.nodes])
-        anim_group = []
-        for i in range(5):
-            anim_group.append(self.nodes[i].ColorNode(RED, str(i)))
+        for i in range(6):
+            self.nodes.append(Square(side_length=1, stroke_width=i*3))
+
+        group = VGroup(*self.nodes).arrange(RIGHT, buff=1)
+        for node in self.nodes:
+            self.play(FadeIn(node))
         
-        self.play(Succession(*anim_group, lag_ratio=2, run_time=4))
+        for node in self.nodes:
+            print(node.get_height())
+            
+        center = self.nodes[0].get_center()
+        last_center = self.nodes[-1].get_center()
+        l = Line(start=(center + UP*0.5), end=(last_center+UP*0.5), color=RED)
+        l2 = Line(start=(center + DOWN*0.5), end=(last_center+ DOWN*0.5), color=RED)
+        
+        self.play(Create(l), Create(l2))
+        self.wait()
+    
+
         

@@ -95,6 +95,9 @@ class Motivation(Slide):
         
         # self.clear()
         
+        self.play(EmptyAnimation())
+        self.next_slide()
+        
         standard_coloring_title = Text("Standard graph coloring", color=BLUE, font_size=48).to_edge(UP)
         self.play(FadeIn(standard_coloring_title))
         self.next_slide()
@@ -277,11 +280,19 @@ class Motivation(Slide):
         
         self.play(FadeIn(title))
         
-        origin = Text("Proposed by Goddard et al. (2002) under the name of broadcast colorings", font_size=26, t2c={'broadcast colorings': YELLOW})
-        name_change = Text("Brešar et al. (2007), re-interpreted the notion and called it packing colorings.", font_size=26, t2c={'packing colorings': YELLOW})
-        since_then = Text("Since then, over 70 papers have studied different aspects of packing colorings.", font_size=26, t2c={'over 70 papers':PINK})
-        most_important_problem = Text("The latest survey of Brešar et al. (2020) states that\n the most important open problem with respect to infinite graphs,\n is to find the packing-chromatic number of the infinite square grid!", font_size=28, t2c={'most important open problem':BLUE, 'packing-chromatic number of the infinite square grid': ORANGE})
-        bpoints = Group(origin, name_change, since_then, most_important_problem).arrange(DOWN, buff=MED_LARGE_BUFF, aligned_edge=LEFT).next_to(title, DOWN, buff=LARGE_BUFF)
+        origin = Tex(r"$\blacktriangleright$", r" Proposed by Goddard et al. (2002) under the name of {{broadcast colorings}}", font_size=36)
+        origin.set_color_by_tex(r"broadcast colorings", YELLOW)
+        name_change = Tex(r"$\blacktriangleright$", r" Brešar et al. (2007), re-interpreted the notion and called it {{packing colorings}}.", font_size=36)
+        name_change.set_color_by_tex(r"packing colorings", YELLOW)
+        since_then = Tex(r"$\blacktriangleright$", r" Since then, {{over 70 papers}} have studied different aspects of packing colorings.", font_size=36)
+        since_then.set_color_by_tex(r"over 70 papers", PINK)
+        most_important_problem = Tex(r"$\blacktriangleright$", r" The latest survey of Brešar et al. (2020) states that\\ {{the most important open problem}} with respect to infinite graphs,\\ is to find the {{packing-chromatic number of the infinite square grid}}!", font_size=36)
+        most_important_problem.set_color_by_tex(r"most important open problem", BLUE)
+        most_important_problem.set_color_by_tex(r"packing-chromatic number of the infinite square grid", ORANGE)
+        bpoints = VGroup(origin, name_change, since_then, most_important_problem).arrange(DOWN, buff=MED_LARGE_BUFF, aligned_edge=LEFT).next_to(title, DOWN, buff=LARGE_BUFF)
+        
+        for bpoint in bpoints:
+            bpoint.set_color_by_tex(r"blacktriangleright", BLUE)
                          
         self.next_slide()
         self.play(Write(origin))                                                        
