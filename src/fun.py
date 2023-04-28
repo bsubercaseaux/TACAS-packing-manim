@@ -36,7 +36,7 @@ class Fun(Slide):
         # first_email.next_to(group, DOWN, buff=MED_LARGE_BUFF)
         # first_email.shift(2*LEFT)
         
-        first_email = Text('Knuth (paraphrased): \n     "The tiling of Fig 4b. (Plus encoding) appears promimently\n behind the altar on the church of Roa, Norway,\n where my wife and I served in 1972-1973"', font_size=26, t2c={'Knuth':YELLOW}, t2s={'The tiling of Fig 4b. (Plus encoding) appears promimently\n behind the altar on the church of Roa, Norway,\n where my wife and I served in 1972-1973': ITALIC})
+        first_email = Text('Knuth (paraphrased): \n     "The tiling of Fig 4b. (Plus encoding) appears promimently\n behind the altar on the church of Røa, Norway,\n which my wife and I visited during 1972 and 1973"', font_size=26, t2c={'Knuth':YELLOW}, t2s={'The tiling of Fig 4b. (Plus encoding) appears promimently\n behind the altar on the church of Røa, Norway,\n whhich my wife and I visited during 1972 and 1973': ITALIC})
         first_email.next_to(group, DOWN, buff=MED_LARGE_BUFF)
         first_email.shift(1.5*LEFT)
         self.play(FadeIn(first_email))
@@ -54,6 +54,4 @@ class Fun(Slide):
         second_email.shift(13*LEFT +0.2*DOWN)
         self.next_slide()
         self.play(FadeIn(second_email))
-        
-        
-        
+        self.next_slide()

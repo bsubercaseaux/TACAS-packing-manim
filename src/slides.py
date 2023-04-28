@@ -19,8 +19,8 @@ from manim_slides import Slide
 
 
 
-#list_of_slides = [Motivation, IntroSlide, HistoricalSummary, ProvingBounds, Subgraphs, Translational, DirectEncoding,  PlusEncoding,  SymmetryBreaking,  CubeAndConquer, Alod, ProofAndVerification, Fun, Chessboard, Final]
-list_of_slides = [Fun]
+list_of_slides = [Motivation, IntroSlide, HistoricalSummary, ProvingBounds, Subgraphs, Translational, DirectEncoding,  PlusEncoding,  SymmetryBreaking,  CubeAndConquer, Alod, ProofAndVerification, Fun, Chessboard, Final]
+#list_of_slides = [Fun]
 
 LAST = False
 if LAST:
