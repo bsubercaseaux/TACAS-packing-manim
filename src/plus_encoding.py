@@ -128,7 +128,7 @@ class PlusEncoding(Slide):
             [["935", "1559", "1039"],
             ["21086", "3928", "7548"],
             ["10774", "2539", "811"]],
-            row_labels=[Text("# of vars"), Text("# of clauses"), Text("CDCL time [s]")],
+            row_labels=[Text("# of vars"), Text("# of clauses"), Text("Runtime [s]")],
             col_labels=[Text("direct"), Text("BVA"), Text("Plus")],
             top_left_entry=Tex(r'$\chi_\rho(D_6) \geq 12$', font_size=60, color=BLUE))
             
@@ -146,4 +146,17 @@ class PlusEncoding(Slide):
         self.next_slide()
         
         self.play(table.animate.add_highlighted_cell((0,0), color=GREEN))
+        self.next_slide()
+        
+        
+class StructuredBVA(Slide):
+    def construct(self):
+        analyzing = Text("An interesting success of 'structured' variable addition", t2c={"structured": GREEN}, font_size=36).to_edge(UP)
+        self.play(FadeIn(analyzing))
+        self.next_slide()
+        based = Text("Based on this, Andrew Haberlandt and Harrison Green developed SBVA", t2c={"SBVA": PINK}, font_size=32).next_to(analyzing, DOWN, buff=MED_LARGE_BUFF)
+        self.play(FadeIn(based))
+        self.next_slide()
+        winners = ImageMobject("img/sbva.png").next_to(based, DOWN, buff=MED_LARGE_BUFF)
+        self.play(FadeIn(winners))
         self.next_slide()

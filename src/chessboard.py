@@ -129,5 +129,15 @@ class Chessboard(Slide):
         )
         
         self.next_slide()
+        self.clear()
+        # self.play(FadeOut(d_14_ones), FadeOut(detail_unsat), FadeOut(detail_sat), FadeOut(title)) # ?
 
+        # math art
+        title = Text("We liked this counter-example too much!", font_size=42).to_edge(UP)
 
+        painting1 = ImageMobject("img/painting1.jpg").scale(0.7).shift(1.5*LEFT)
+        painting2 = ImageMobject("img/painting2.jpg").next_to(painting1, RIGHT, buff=SMALL_BUFF).scale(0.5)
+        self.play(FadeIn(title))
+        self.next_slide()
+        self.play(FadeIn(painting1), FadeIn(painting2))
+        self.next_slide()

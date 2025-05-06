@@ -119,7 +119,7 @@ class Alod(Slide):
         table_tex = Tex(r'''\begin{tabular}{c@{~~~}c@{~~~}c@{~~~}|@{~~~}c@{~~~~}c@{~~~~}c@{~~~}|@{~~~}c@{~~~}c@{~~~}c}
 		\toprule
 			sym & {\sc alod} & {\sf Plus} & \#var & \#cls & runtime [s] & derivation & proof & check [s]\\ \midrule
-  & &  & \phantom{0}935 & 21086 & 10741.69 & 0 b & 11.99 Gb & 31731\\
+  & &  & \phantom{0}935 & 21086 & 10741 & 0 b & 11.99 Gb & 31731\\
  & & x  & 1039 & \phantom{0}7548 & \phantom{00}809  & 149 Kb & \phantom{0}1.29 Gb & \phantom{0}1720\\
   & x & & \phantom{0}935 & 21171 & \phantom{0}8422 & 1.6 Kb & \phantom{0}8.11 Gb & 21732\\
  & x & x & 1039 & \phantom{0}7633 & \phantom{00}389 & 151 Kb & \phantom{0}1.29 Gb & \phantom{0}1708\\

@@ -49,27 +49,29 @@ class SymmetryBreaking(Slide):
         d_6_plus.move_to(d_6)
         
         self.next_slide()
-        self.play(Transform(d_6, d_6_plus))
+        # self.play(Transform(d_6, d_6_plus))
         
-        self.next_slide()
+        # self.next_slide()
         
-        plus_no_longer = Tex(r"But the Plus encoding only has a ",r"$\times 4$", r"-symmetry \frownie", font_size=36)
-        plus_no_longer.set_color_by_tex("4", RED)
-        plus_no_longer.next_to(eightfold_symmetry, DOWN, buff=MED_SMALL_BUFF)
+        # plus_no_longer = Tex(r"But the Plus encoding only has a ",r"$\times 4$", r"-symmetry \frownie", font_size=36)
+        # plus_no_longer.set_color_by_tex("4", RED)
+        # plus_no_longer.next_to(eightfold_symmetry, DOWN, buff=MED_SMALL_BUFF)
         
-        self.play(arrows[2].animate.set_color(RED), Write(plus_no_longer))
-        self.next_slide()
+        # self.play(arrows[2].animate.set_color(RED), Write(plus_no_longer))
+        # self.next_slide()
         
-        solution = Tex(r"Therefore we need to break symmetry\\", r"before", r" re-encoding uses Pluses!", color=YELLOW, font_size=36)
-        solution.set_color_by_tex("before", PINK)
-        solution.next_to(plus_no_longer, DOWN, buff=MED_LARGE_BUFF)
-        self.play(Write(solution))
-        self.next_slide()
+        # solution = Tex(r"Therefore we need to break symmetry\\", r"before", r" re-encoding uses Pluses!", color=YELLOW, font_size=36)
+        # solution.set_color_by_tex("before", PINK)
+        # solution.next_to(plus_no_longer, DOWN, buff=MED_LARGE_BUFF)
+        # self.play(Write(solution))
+        # self.next_slide()
         
         encode = Text("How do we encode this symmetry breaking?", font_size=36)
         encode.next_to(title, DOWN, buff=MED_SMALL_BUFF)
         
-        self.play(FadeOut(solution), FadeOut(plus_no_longer), FadeOut(eightfold_symmetry), FadeOut(d_6_arrows), FadeOut(d_6),
+        # FadeOut(solution)
+        #FadeOut(plus_no_longer)
+        self.play( FadeOut(eightfold_symmetry), FadeOut(d_6_arrows), FadeOut(d_6),
                 FadeIn(encode))
         
         

@@ -30,29 +30,29 @@ class Translational(Slide):
         self.play(Write(ekstein_force), g_9_15.ColorNode(4, 4, 9))
 
         self.next_slide()
-        d_14 = Diamond(14, scale=0.2*4, node_constructor=Square).scale(0.23)
+        d_15 = Diamond(15, scale=0.2*4, node_constructor=Square).scale(0.23)
 
         our_force = Tex(r"We force the central vertex to get color ", r"$6$.").next_to(
-            d_14, DOWN, buff=MED_SMALL_BUFF)
+            d_15, DOWN, buff=MED_SMALL_BUFF)
         our_force.set_color_by_tex("6", YELLOW)
-        self.play(FadeOut(g_9_15), FadeIn(d_14), FadeOut(
+        self.play(FadeOut(g_9_15), FadeIn(d_15), FadeOut(
             ekstein_case), Transform(ekstein_force, our_force))
-        self.play(d_14.ColorNode(0, 0, 6, label_num_color=BLACK))
+        self.play(d_15.ColorNode(0, 0, 6, label_num_color=BLACK))
 
         self.next_slide()
 
         center_is_better = Text("The center is the best vertex to force,\n as it participates in the most clauses!", font_size=26, t2c={
-                                'center': YELLOW, 'best vertex to force': BLUE}).next_to(d_14, RIGHT, buff=MED_SMALL_BUFF)
+                                'center': YELLOW, 'best vertex to force': BLUE}).next_to(d_15, RIGHT, buff=MED_SMALL_BUFF)
         center_is_better.shift(2*LEFT)
 
-        self.play(d_14.animate.shift(2*LEFT), Write(center_is_better))
+        self.play(d_15.animate.shift(2*LEFT), Write(center_is_better))
 
         self.next_slide()
 
         why = Text("Why can we do this?", font_size=48, t2c={'Why': YELLOW})
         why.next_to(title, DOWN, buff=MED_SMALL_BUFF)
 
-        self.play(FadeOut(d_14), FadeOut(center_is_better),
+        self.play(FadeOut(d_15), FadeOut(center_is_better),
                   FadeOut(ekstein_force), FadeIn(why))
 
         self.next_slide()
@@ -63,7 +63,7 @@ class Translational(Slide):
                        font_size=36)
         therefore = Tex(r"3.", r" Therefore a solution, if it exists, must use color ", r"$6$.",
                         font_size=36)
-        center = Tex(r"4.", r" We can safely assume it's in the center by considering a ", r"$D_{14}$ around it.",
+        center = Tex(r"4.", r" We can safely assume it's in the center by considering a ", r"$D_{15}$ around it.",
                      font_size=36)
         no_13.set_color_by_tex("1.", BLUE)
         if_sol_6.set_color_by_tex("2.", BLUE)
@@ -328,7 +328,7 @@ class Translational(Slide):
         infinite.next_to(center, DOWN, buff=MED_SMALL_BUFF)
 
         d_2 = Diamond(2, scale=0.8, node_constructor=Square,
-                      color=YELLOW, stroke_width=4).scale(0.4)
+                      color=BLACK, stroke_width=4).scale(0.4)
         d_2.next_to(center, DOWN, buff=MED_SMALL_BUFF)
         d_2.shift(0.32*10.5*LEFT + 0.32*0.5*DOWN)
 

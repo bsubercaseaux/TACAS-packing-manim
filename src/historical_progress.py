@@ -78,7 +78,7 @@ class AppearingLineGraph(Mobject):
 
 class HistoricalSummary(Slide):
     def construct(self):
-
+        # self.camera.background_color = WHITE
         
         title = Text("Historical Progress", font_size=60, color=YELLOW).to_edge(UP)
    
@@ -92,7 +92,7 @@ class HistoricalSummary(Slide):
                 x_axis_config={"numbers_to_include": [2002, 2003, 2009, 2010, 2015, 2017, 2022, 2023]},
                 y_axis_config={"numbers_to_include": [9, 10, 12, 13, 14, 15, 16, 17, 22, 23]},
                 ).shift(0.6*DOWN).scale_to_fit_width(11.5).shift(0.2*DOWN)
-
+        # ax.set_color(BLACK)
         x_label = ax.get_x_axis_label(r'\text{Year}')
         y_label = ax.get_y_axis_label(r'\text{Bounds on }\textcolor{red}{\chi_\rho(\mathbb{Z}^2)}')
         
@@ -106,18 +106,18 @@ class HistoricalSummary(Slide):
         upper_bounds = AppearingLineGraph(upper_points, upper_labels, ax, line_color=BLUE, label_color=BLUE, label_pos=label_pos_upper)
 
         lower_points = { 2002: 9, 2003: 9, 2009: 10, 2010: 12, 2015: 13, 2017:13, 2022: 14, 2023: 15}
-        lower_labels = ['Goddard et al.', '', 'Fiala et al.', 'Ekstein et al.', 'Martin et al.', '', 'Our work', 'This work']
+        lower_labels = ['Goddard et al.', '', 'Fiala et al.', 'Ekstein et al.', 'Martin et al.', '', 'Subercaseaux and Heule (S&H)', 'S&H']
 
         label_pos_lower = [(-4, -2.8, 0), (-3.7, -2.8, 0), (-1.4, -2.8, 0), (-0.8, -1.3, 0), (1.5, -2, 0), (3, -1, 0), (4.7, -1.6, 0), (6, -0.75, 0)]
         lower_bounds = AppearingLineGraph(lower_points, lower_labels, ax, label_pos=label_pos_lower)
-        lower_bounds.point_labels[-1].set_color(YELLOW).set_weight(BOLD)
+        #lower_bounds.point_labels[-1].set_color(YELLOW).set_weight(BOLD)
         
         for lower_anim, upper_anim in zip(upper_bounds.get_anims(), lower_bounds.get_anims()):
             self.next_slide()
             self.play(lower_anim, upper_anim)
             
-        shaded_rectangle = Rectangle(height=6, width=3.55, color=GREEN, fill_opacity=0.4, stroke_width=0).shift(3.32*RIGHT + 0.6*DOWN) 
-        sat_label = Text("SAT based!", font_size=44, color=WHITE).move_to([3.3, 1.5,0])
+        shaded_rectangle = Rectangle(height=6, width=3.7, color=GREEN, fill_opacity=0.4, stroke_width=0).shift(3.32*RIGHT + 0.6*DOWN) 
+        sat_label = Text("SAT proofs", font_size=44, color=WHITE).move_to([3.3, 1.5,0])
         
         self.next_slide()
         self.play(FadeIn(shaded_rectangle), Write(sat_label))

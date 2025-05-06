@@ -8,13 +8,15 @@ def to_3d(x, y):
     return np.array([x, y, 0])
 
 class Grid(VMobject):
-    def __init__(self, m, n, scale=0.2, node_constructor=Circle, infinite_rows=False, infinite_columns=False, color=WHITE, toroidal=False, stroke_width=2, assignment=None, **kwargs):
+    def __init__(self, m, n, scale=0.2, node_constructor=Circle, infinite_rows=False, infinite_columns=False, color=WHITE, toroidal=False, stroke_width=2, assignment=None, chebyshev=False, **kwargs):
         super().__init__()
         
         self.nodes = {}
         self.edges = {}
         self.labels = {}
         vdirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        if chebyshev:
+            vdirs += [(-1, -1), (-1, 1), (1, -1), (1, 1)]
         self.m = m
         self.n = n
         for i in range(m):
@@ -103,6 +105,8 @@ class Grid(VMobject):
         self.labels[(i, j)] = label
         self.nodes[(i, j)].add(label)
         return None
+
+
 
 
 class Diamond(VMobject):
@@ -198,7 +202,7 @@ class Subgraphs(Slide):
 
         caption_9_15 = Tex(r"$9 \times 15$", " grid").set_color_by_tex("9", YELLOW).next_to(g_9_15, DOWN, buff=MED_SMALL_BUFF)    
         caption_14_14 = Tex(r"$14 \times 14$", " grid").set_color_by_tex("14", YELLOW).next_to(g_14_14, DOWN, buff=MED_SMALL_BUFF)    
-        caption_d14 = Tex(r"$D_{14}$", " diamond").set_color_by_tex("D", YELLOW).next_to(d_14, DOWN, buff=MED_SMALL_BUFF)    
+        caption_d14 = Tex(r"$D_{15}$", " diamond").set_color_by_tex("D", YELLOW).next_to(d_14, DOWN, buff=MED_SMALL_BUFF)    
         
         detail_9_15 = Tex(r"Ekstein et al. ", r"$\chi_\rho(\mathbb{Z}^2) \geq 12$", font_size=28).set_color_by_tex("chi", BLUE).next_to(caption_9_15, DOWN, buff=SMALL_BUFF)
         detail_14_14 = Tex(r"Martin et al. ", r"$\chi_\rho(\mathbb{Z}^2) \geq 13$", font_size=28).set_color_by_tex("chi", BLUE).next_to(caption_14_14, DOWN, buff=SMALL_BUFF)
@@ -213,9 +217,9 @@ class Subgraphs(Slide):
 
         s_g_9_15 = Grid(9, 15, scale=0.68, node_constructor=Square, color=PINK).scale(0.25)
         s_g_14_14 = Grid(14, 14, scale=0.68, node_constructor=Square, color=PINK).scale(0.25)
-        s_d_14 = Diamond(14, scale=0.68, node_constructor=Square).scale(0.25)
+        s_d_15 = Diamond(15, scale=0.68, node_constructor=Square).scale(0.25)
         
-        g_grids = VGroup(s_g_9_15, s_g_14_14, s_d_14).arrange(RIGHT, buff=1.4*LARGE_BUFF).next_to(title, DOWN, buff=MED_SMALL_BUFF)
+        g_grids = VGroup(s_g_9_15, s_g_14_14, s_d_15).arrange(RIGHT, buff=1.4*LARGE_BUFF).next_to(title, DOWN, buff=MED_SMALL_BUFF)
         g_grids.shift(0.6*RIGHT)
 
         self.next_slide()

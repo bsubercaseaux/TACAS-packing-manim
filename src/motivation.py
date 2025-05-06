@@ -6,97 +6,10 @@ import numpy as np
 from empty import EmptyAnimation
 
 
-
 class Motivation(Slide):
     def construct(self):
-        # title = Text("Motivation: Frequency Assignment", color=BLUE, t2c={'Frequency Assignment':WHITE}, font_size=48)
-        # title.to_edge(UP)
-
-        # self.play(FadeIn(title))
-
+        # self.play(EmptyAnimation())
         # self.next_slide()
-
-        # n_ants = 5
-        # ants = [ImageMobject('img/radio_antenna.png').set_color(WHITE) for i in range(n_ants)]
-        # ants[0].move_to((-4, 0, 0))
-        # lines = []
-        # for i in range(1, n_ants):
-        #     ants[i].next_to(ants[i-1], RIGHT, buff=MED_LARGE_BUFF)
-        #     lines.append(Line(ants[i-1].get_center(), ants[i].get_center(), buff=0.2))
-
-        # antennas = Group(*ants)
-        # lines = Group(*lines)
-        # self.play(FadeIn(antennas), FadeIn(lines))
-
-        # self.next_slide()
-
-        # freq_subtitle = Text("Each station must be assigned a radio frequency — avoid conflicts!", font_size=28, color=YELLOW).next_to(antennas, DOWN, buff=LARGE_BUFF)
-        # self.play(Write(freq_subtitle), run_time=0.8)
-
-        # self.next_slide()
-
-        # f2 = Text("101.7 MHz", color=config.MY_COLORS[1], font_size=24).next_to(ants[2], UP, MED_SMALL_BUFF)
-
-        # self.play(Write(f2), ants[2].animate.set_color(config.MY_COLORS[1]))
-        # self.next_slide()
-
-        # f3 = Text("101.9 MHz", color=config.MY_COLORS[2], font_size=24).next_to(ants[3], UP, MED_SMALL_BUFF)
-
-        # self.play(Write(f3), ants[3].animate.set_color(config.MY_COLORS[2]))
-        # self.next_slide()
-
-        # f0, f1, f4 = f2.copy(), f3.copy(), f2.copy()
-        # f0.next_to(ants[0], UP, MED_SMALL_BUFF)
-        # f1.next_to(ants[1], UP, MED_SMALL_BUFF)
-        # f4.next_to(ants[4], UP, MED_SMALL_BUFF)
-        
-        # self.play(*[FadeIn(f) for f in [f0, f1, f4]], 
-        #           *[ants[ant].animate.set_color(config.MY_COLORS[2] if ant%2 else config.MY_COLORS[1]) for ant in [0, 1, 4]])
-
-        # self.next_slide()
-        
-        # self.play(*[Transform(f, Text("1", color=config.MY_COLORS[1], font_size=26).move_to(f)) for f in [f0, f2, f4]])
-        # self.next_slide()
-        # self.play(*[Transform(f, Text("2", color=config.MY_COLORS[2], font_size=26).move_to(f)) for f in [f1, f3]])
-         
-        # self.next_slide()
-        
-        # self.play(*[FadeOut(f) for f in [f0, f1, f2, f3, f4]],
-        #           *[ant.animate.set_color(WHITE) for ant in ants])
-        
-        # self.next_slide()
-        
-        # self.play(ants[3].animate.scale(1.75), freq_subtitle.animate.shift(0.5*DOWN))
-        # self.next_slide()
-        
-        # self.play(ants[3].animate.set_color(config.MY_COLORS[2]), FadeIn(f3), f3.animate.shift(0.3*UP))
-        # self.next_slide()
-        
-        # self.play(*[ant.animate.set_color(config.MY_COLORS[1]) for ant in [ants[2], ants[4]]], FadeIn(f2), FadeIn(f4))
-        # self.next_slide()
-        
-        # self.play(ants[1].animate.scale(2))
-        # self.next_slide()
-        # self.play(ants[1].animate.set_color(config.MY_COLORS[3]),
-        #           FadeIn(f1),
-        #           Transform(f1, Text("3", color=config.MY_COLORS[3], font_size=26).move_to(f1).shift(0.3*UP)),
-        #          )
-        # self.next_slide()
-        
-        # self.play(ants[0].animate.set_color(config.MY_COLORS[1]), FadeIn(f0))
-        
-        # self.next_slide()
-        
-        # broadcast_coloring = Text("This is the basic idea of Broadcast Colorings (Goddard et al., 2002)", t2c={'Broadcast Colorings': YELLOW}, font_size=28).next_to(antennas, DOWN, buff=MED_LARGE_BUFF)
-        
-        # self.play(Transform(freq_subtitle, broadcast_coloring))
-        
-        # self.next_slide()
-        
-        # self.clear()
-        
-        self.play(EmptyAnimation())
-        self.next_slide()
         
         standard_coloring_title = Text("Standard graph coloring", color=BLUE, font_size=48).to_edge(UP)
         self.play(FadeIn(standard_coloring_title))
@@ -253,17 +166,91 @@ class Motivation(Slide):
         self.play(Write(z_p2_text))
         self.next_slide()
         
-        self.clear()
+
         
-        z2 = Tex(r"What about ", r"$\mathbb{Z}^2$", r"?", font_size=72).set_color_by_tex("Z", YELLOW)
-        z2.to_edge(UP)
+class SquareGrid(Slide):
+    def construct(self):
+         
+        back = Tex(r"Back to the standard $\mathbb{Z}^2$ grid", font_size=72, color=YELLOW).to_edge(UP)
+        self.play(Write(back))   
         
-        g12_12 = Grid(10, 10, scale=0.15, infinite_columns=True, infinite_rows=True).next_to(z2, DOWN, buff=MED_SMALL_BUFF)
-        self.play(Write(z2), FadeIn(g12_12))
         
-        text_rec = Rectangle(height=1.5, width=6, color=YELLOW, fill_opacity=1)
+        can_we = Text(r"What happens if we try to use the same proof?").next_to(back, DOWN, buff=MED_SMALL_BUFF)
+        self.play(FadeIn(can_we))
+        
+        self.next_slide()
+        
+        z_4_4 = Grid(4, 4, scale=0.25, infinite_columns=True, infinite_rows=True, chebyshev=False).next_to(can_we, DOWN, buff=MED_LARGE_BUFF).shift(LEFT*3)
+        self.play(FadeIn(z_4_4))
+        self.next_slide()
+        
+        self.play(z_4_4.ColorNode(0, 0, 3), z_4_4.ColorNode(1, 3, 3), z_4_4.ColorNode(3, 1, 3))
+        
+        now_density = Tex(r"Now we can say:", r"$$\textrm{density}_{\mathbb{Z}_{\ell_1}^2}(k) \leq \frac{3}{(k+1)^2}$$").scale(0.8).next_to(z_4_4, RIGHT, buff=MED_LARGE_BUFF)
+        now_density[1].set_color(PINK)
+        now_density.shift(1.0*UP + 1.0*RIGHT)
+        self.next_slide()
+        self.play(FadeIn(now_density))
+        
+        self.next_slide()
+        not_enough = Tex(r"But this only gives us ", r"$$\sum_{k=1}^{\infty} \frac{3}{(k+1)^2} \approx 1.93 > 1$$").scale(0.8).next_to(now_density, DOWN, buff=MED_LARGE_BUFF)
+        not_enough[1].set_color(YELLOW)
+        self.play(FadeIn(not_enough))
+        
+        self.next_slide()
+
+
+class WhatToDo(Slide):
+    def construct(self):
+        title = Text("What can we do?", font_size=60, color=YELLOW).to_edge(UP).shift(0.5*UP)
+        self.play(FadeIn(title))
+        first_five_terms = Text("Idea: look more carefully at the first few densities", font_size=36, t2c={"Idea": BLUE}).next_to(title, DOWN, buff=MED_LARGE_BUFF)
+        self.next_slide()
+        self.play(FadeIn(first_five_terms))
+        self.next_slide()
+        
+        # densities = Text("We :", font_size=36, t2c={"densities": BLUE}).next_to(first_five_terms, DOWN, buff=MED_LARGE_BUFF)
+        d1 = Tex(r"$\blacktriangleright$", r"\, $\textrm{density}_{\mathbb{Z}_{\ell_1}^2}(1) \leq 1/2$", font_size=36)
+        d2 = Tex(r"$\blacktriangleright$", r"\, $\textrm{density}_{\mathbb{Z}_{\ell_1}^2}(2) \leq 1/5$", font_size=36)
+        d3 = Tex(r"$\blacktriangleright$", r"\, $\textrm{density}_{\mathbb{Z}_{\ell_1}^2}(3) \leq 1/8$", font_size=36)
+        d4 = Tex(r"$\blacktriangleright$", r"\, $\textrm{density}_{\mathbb{Z}_{\ell_1}^2}(4) \leq 1/10$", font_size=36)
+        d5 = Tex(r"$\blacktriangleright$", r"\, $\textrm{density}_{\mathbb{Z}_{\ell_1}^2}(5) \leq 1/16$", font_size=36)
+        dens = VGroup(d1, d2, d3, d4, d5).arrange(DOWN, buff=MED_SMALL_BUFF, aligned_edge=LEFT).next_to(first_five_terms, DOWN, buff=MED_SMALL_BUFF)
+        for d in dens:
+            d[0].set_color(BLUE)
+            self.play(FadeIn(d))
+            self.next_slide()
+        # wolfram_img = ImageMobject("img/first_terms.png").next_to(first_five_terms, DOWN, buff=MED_LARGE_BUFF)
+        # self.play(FadeIn(wolfram_img))
+        # self.next_slide()
+        # self.play(FadeOut(wolfram_img))
+        # self.next_slide()
+        only_five = Text("This only proves we need at least 6 colors", font_size=36, t2c={"at least 6": YELLOW}).next_to(dens, DOWN, buff=MED_SMALL_BUFF)
+        self.play(FadeIn(only_five))
+        self.next_slide()
+        careful = Tex(r"A much more careful analysis was used\\to show we need at least ", r"10 ", r"colors (Fiala et al. 2009)").scale(1.0).next_to(only_five, DOWN, buff=MED_SMALL_BUFF)
+        careful.set_color_by_tex(r"10", YELLOW)
+        self.play(FadeIn(careful))
+        self.next_slide()
+        
+        history = Text("History of the problem shows we need computers to solve it!", t2c={"computers": BLUE}).scale(0.7).next_to(careful, DOWN, buff=LARGE_BUFF)
+        sq = SurroundingRectangle(history, buff=MED_SMALL_BUFF)
+        self.play(FadeIn(history), FadeIn(sq))
+        self.next_slide()
+
+
+class ThisTalk(Slide):
+    def construct(self):
+        title = Tex(r"So... what is ", r"$\chi_\rho(\mathbb{Z}^2) = $?", font_size=72, color=YELLOW).to_edge(UP)
+        title.set_color_by_tex("\chi", PINK)
+        self.play(FadeIn(title))
+        g12_12 = Grid(10, 10, scale=0.15, infinite_columns=True, infinite_rows=True)
+        g12_12.shift(2.5*LEFT + 3.5*DOWN)
+        self.play(FadeIn(g12_12))
+        
+        text_rec = Rectangle(height=1.5, width=6, color=BLUE, fill_opacity=0.97)
         answer = Text("Answer: 15", font_size=72, color=BLACK, t2c={'15': PINK}).center()
-        this_talk = Text("This talk is about how we used SAT-solving to prove it!", color=BLACK, t2c={'SAT-solving': BLUE}, font_size=36)
+        this_talk = Text("Rest of the talk is about how we used SAT-solvers to prove it!", color=BLACK, t2c={'SAT-solvers': PINK}, font_size=36)
         texts = Group(answer, this_talk).arrange(DOWN, buff=MED_LARGE_BUFF)
         text_rec.surround(texts)
         
@@ -271,10 +258,12 @@ class Motivation(Slide):
         self.play(Create(text_rec), FadeIn(answer))
         
         self.next_slide()
-        self.play(Write(this_talk))
+        self.play(FadeIn(this_talk))
         self.next_slide()
-        
-        self.clear()
+
+
+class PackingColorings(Slide):
+    def construct(self):
         
         title = Text("Packing Colorings", font_size=72, color=BLUE).to_edge(UP)
         
@@ -286,7 +275,7 @@ class Motivation(Slide):
         name_change.set_color_by_tex(r"packing colorings", YELLOW)
         since_then = Tex(r"$\blacktriangleright$", r" Since then, {{over 70 papers}} have studied different aspects of packing colorings.", font_size=36)
         since_then.set_color_by_tex(r"over 70 papers", PINK)
-        most_important_problem = Tex(r"$\blacktriangleright$", r" The latest survey of Brešar et al. (2020) states that\\ {{the most important open problem}} with respect to infinite graphs,\\ is to find the {{packing-chromatic number of the infinite square grid}}!", font_size=36)
+        most_important_problem = Tex(r"$\blacktriangleright$", r" The latest survey of Brešar et al. (2020) states that\\ {{the most important open problem}} with respect to infinite graphs,\\ is to find the {{packing-chromatic number of the infinite square grid}}!", font_size=40)
         most_important_problem.set_color_by_tex(r"most important open problem", BLUE)
         most_important_problem.set_color_by_tex(r"packing-chromatic number of the infinite square grid", ORANGE)
         bpoints = VGroup(origin, name_change, since_then, most_important_problem).arrange(DOWN, buff=MED_LARGE_BUFF, aligned_edge=LEFT).next_to(title, DOWN, buff=LARGE_BUFF)
@@ -297,12 +286,47 @@ class Motivation(Slide):
         self.next_slide()
         self.play(Write(origin))                                                        
         self.next_slide()
+        radio1 = ImageMobject("img/radio_antenna.png", color=WHITE).scale(1).next_to(origin, DOWN, buff=MED_LARGE_BUFF).shift(5*LEFT)
+        radio2 = ImageMobject("img/radio_antenna.png", color=WHITE).scale(1).next_to(radio1, RIGHT, buff=1.5*MED_LARGE_BUFF)
+        radio3 = ImageMobject("img/radio_antenna.png", color=WHITE).scale(1).next_to(radio2, RIGHT, buff=1.5*MED_LARGE_BUFF)
+        radio4 = ImageMobject("img/radio_antenna.png", color=WHITE).scale(1).next_to(radio3, RIGHT, buff=1.5*MED_LARGE_BUFF)
+        freq1 = Text("99.4 Mhz", font_size=42, color=config.MY_COLORS[1]).next_to(radio1, DOWN, buff=MED_SMALL_BUFF)
+        freq2 = Text("99.4 Mhz", font_size=42, color=config.MY_COLORS[1]).next_to(radio2, DOWN, buff=MED_SMALL_BUFF)
+        freq3 = Text("99.4 Mhz", font_size=42, color=config.MY_COLORS[1]).next_to(radio3, DOWN, buff=MED_SMALL_BUFF)
+        freq4 = Text("99.4 Mhz", font_size=42, color=config.MY_COLORS[1]).next_to(radio4, DOWN, buff=MED_SMALL_BUFF)
+        self.play(FadeIn(radio1), FadeIn(radio2), FadeIn(radio3), FadeIn(radio4), FadeIn(freq1), FadeIn(freq2), FadeIn(freq3), FadeIn(freq4))
+        self.next_slide()
+        c1 = Circle(radius=3, color=config.MY_COLORS[1]).move_to(radio1)
+        c2 = Circle(radius=3, color=config.MY_COLORS[1]).move_to(radio2)
+        c3 = Circle(radius=3, color=config.MY_COLORS[1]).move_to(radio3)
+        c4 = Circle(radius=3, color=config.MY_COLORS[1]).move_to(radio4)
+        def bdcast(c, color): 
+            return Broadcast(c, n_mobs=5, focal_point=c.get_center()+0.225*UP, color=color)
+       
+        self.play(bdcast(c1,  config.MY_COLORS[1]), bdcast(c2,config.MY_COLORS[1]), bdcast(c3,config.MY_COLORS[1]), bdcast(c4,config.MY_COLORS[1]))
+        
+        self.next_slide()
+        freq2_changed = Text("101.7 Mhz", font_size=42, color=config.MY_COLORS[2]).next_to(radio2, DOWN, buff=MED_SMALL_BUFF)
+        self.play(Transform(freq2, freq2_changed))
+        self.next_slide()
+        c2 = Circle(radius=5, color=config.MY_COLORS[2]).move_to(radio2)
+        self.play(bdcast(c1,  config.MY_COLORS[1]), bdcast(c2,config.MY_COLORS[2]), bdcast(c3,config.MY_COLORS[1]), bdcast(c4,config.MY_COLORS[1]))
+        self.next_slide()
+        freq4_changed = Text("105.3 Mhz", font_size=42, color=config.MY_COLORS[3]).next_to(radio4, DOWN, buff=MED_SMALL_BUFF)
+        self.play(Transform(freq4, freq4_changed))
+        self.next_slide()
+        c4 = Circle(radius=7, color=config.MY_COLORS[3]).move_to(radio4)
+        self.play(bdcast(c1,  config.MY_COLORS[1]), bdcast(c2,config.MY_COLORS[2]), bdcast(c3,config.MY_COLORS[1]), bdcast(c4,config.MY_COLORS[3]))
+        
+        
+        
+        self.next_slide()
+        self.play(FadeOut(radio1), FadeOut(radio2), FadeOut(radio3), FadeOut(radio4), FadeOut(freq1), FadeOut(freq2), FadeOut(freq3), FadeOut(freq4))
+        self.next_slide()
+        
         self.play(Write(name_change))
         self.next_slide()
         self.play(Write(since_then))
         self.next_slide()
         self.play(Write(most_important_problem))
         self.next_slide()
-        
-
-   

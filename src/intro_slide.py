@@ -38,13 +38,11 @@ class IntroSlide(Slide):
         self.play(Succession(*anim_group, lag_ratio=2, run_time=4))
         self.play(EmptyAnimation())
         self.next_slide()
-        
-        self.start_loop()
         self.play(Indicate(grid_for_title.nodes[(0, 8)]),
                             Indicate(grid_for_title.nodes[(0, 9)]),
                             Indicate(grid_for_title.labels[(0, 8)],color=BLUE),
                             Indicate(grid_for_title.labels[(0, 9)],color=BLUE))
-        self.end_loop()
+        self.next_slide(loop=True)
         self.play(EmptyAnimation())
         self.next_slide()
        
